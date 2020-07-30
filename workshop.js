@@ -26,7 +26,7 @@ const doubleAll2 = xs => xs.map(x => x * 2)
 
 // Try making a function that triples all elements in an array.
 // replace undefined with a function.
-const tripleAll = xs => undefined
+const tripleAll = xs => xs.map(x => x * 3)
 
 
 // map is not just for simple arithmetic on numbers. It also comes in handy when
@@ -104,7 +104,7 @@ const upperCaseNamesForLoopVersion = people => {
 // Exercise: upperCaseNames
 // Rewrite the above function by using map instead of a for loop.
 // replace undefined with your function definition
-const upperCaseNames = undefined
+const upperCaseNames = people => people.map(person => person.name.toUpperCase())
 
 // Notice that using map is much shorter, easier to write, easier to 
 // read (once you get used to it) and easier to debug.
@@ -145,7 +145,7 @@ const users = [
 
 
 // replace undefined with your function definition
-const userLinks = undefined
+const userLinks = users => users.map(user => `<a href="/users/${user.username}">${user.username}</a>`)
 
 
 // That concludes the map section!
@@ -202,7 +202,7 @@ const applicants = [
 
 // toBeInterviewed should contain only the Bob and Sierra objects.
 // Joe has been filtered out.
-const toBeInterviewed = applicants.filter(applicant => applicant.advancedJSCourse)
+const toBeInterviewed = applicants => applicants.filter(applicant => applicant.advancedJSCourse)
 
 // Exercise: getApplicantEmails
 //
@@ -211,7 +211,7 @@ const toBeInterviewed = applicants.filter(applicant => applicant.advancedJSCours
 // Use map and filter. No for-loops.
 // Hint: You can chain a .map off of the result of a .filter.
 
-const getApplicantEmails = undefined
+const getApplicantEmails = applicants => (applicants.filter(applicant => applicant.advancedJSCourse && applicant.age > 17)).map(applicant => applicant.email)
 
 // Reduce
 //
@@ -257,7 +257,7 @@ const sum2 = xs => xs.reduce((total, x) => total + x)
 // how many people took the advanced course?
 const numberOfAdvancedGrads = 
   applicants
-    .reduce((accum, applicant) => applicant.advancedJSCourse ? accum + 1 : accum, 0)
+    .reduce((accum, applicant) => applicant.advancedJSCourse ? accum + 1 : accum)
 
 // we use the ternary operator (predicate ? resultIfTrue : resultIfFalse) to
 // add 1 to the accumulator if the applicant took the course. If the applicant
@@ -284,7 +284,7 @@ const numberOfAdvancedGrads2 =
 // So don't use Object.assign to implement this. Use reduce.
 // You can use the spread operator (...) if you want, which may make things easier.
 
-const mergeObjects = undefined
+const mergeObjects = xs => xs.reduce((total, x) => {return {...total, ...x}}, {})
 
 // Congratulations on finishing!
 //
